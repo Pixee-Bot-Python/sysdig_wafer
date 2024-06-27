@@ -10,7 +10,7 @@ URL = "https://googlechromelabs.github.io/chrome-for-testing/#stable"
 
 def install_chromedriver():
     try:
-        html = requests.get(URL).text
+        html = requests.get(URL, timeout=60).text
         ext = None
         arch = None
         if sys.platform.startswith("win"):
@@ -41,7 +41,7 @@ def install_chromedriver():
         url = elements[index]
 
         print(f"Downloading {url}")
-        r = requests.get(url)
+        r = requests.get(url, timeout=60)
         with open("chromedriver.zip", "wb") as f:
             f.write(r.content)
 
