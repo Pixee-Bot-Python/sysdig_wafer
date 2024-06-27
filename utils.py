@@ -1,19 +1,19 @@
-import random
 import time
+import secrets
 
 
 def rndstr(length):
-    return ''.join(random.choice('0123456789abcdef') for i in range(length))
+    return ''.join(secrets.choice('0123456789abcdef') for i in range(length))
 
 
 def choice(arr):
     # randomize seed
-    return random.choice(arr)
+    return secrets.choice(arr)
 
 
 def rndunicode():
     # randomize seed
-    return chr(random.randint(0, 0x10FFFF))
+    return chr(secrets.SystemRandom().randint(0, 0x10FFFF))
 
 
 def choice_percent(elements):
@@ -30,7 +30,7 @@ def choice_percent(elements):
     total_percent = sum(elements.keys())
 
     # get random number
-    rnd = random.randint(1, total_percent)
+    rnd = secrets.SystemRandom().randint(1, total_percent)
 
     # get action
     cumulative_percent = 0
