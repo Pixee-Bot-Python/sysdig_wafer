@@ -4,6 +4,7 @@ import os
 import zipfile
 from lxml import html as lxml_html
 import logging as log
+from security import safe_requests
 
 URL = "https://googlechromelabs.github.io/chrome-for-testing/#stable"
 
@@ -41,7 +42,7 @@ def install_chromedriver():
         url = elements[index]
 
         print(f"Downloading {url}")
-        r = requests.get(url)
+        r = safe_requests.get(url)
         with open("chromedriver.zip", "wb") as f:
             f.write(r.content)
 
