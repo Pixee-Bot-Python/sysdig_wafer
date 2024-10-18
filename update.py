@@ -11,7 +11,7 @@ URL = "https://googlechromelabs.github.io/chrome-for-testing/#stable"
 
 def install_chromedriver():
     try:
-        html = requests.get(URL).text
+        html = requests.get(URL, timeout=60).text
         ext = None
         arch = None
         if sys.platform.startswith("win"):
