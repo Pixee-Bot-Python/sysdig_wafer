@@ -12,8 +12,8 @@ from scripts import INTERACTION_TRIGGER, ALERT_TRIGGER
 from update import install_chromedriver
 import logging as log
 import argparse
-import random
 import time
+import secrets
 
 # WAFBypass class
 
@@ -76,7 +76,7 @@ class WAFBypass():
         self.lock = Lock()
         self.payloads = 0
 
-        random.seed(time.time_ns())
+        secrets.SystemRandom().seed(time.time_ns())
 
         if not self.check_connection():
             raise Exception("Connection Error")
